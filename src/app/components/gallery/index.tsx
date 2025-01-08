@@ -3,10 +3,12 @@ import React from "react";
 import ImageCard from "./card";
 import { data } from "@/lib/db";
 import { useSearchParams } from "next/navigation";
+import UploadPopup from "./uploadPopup";
 const IndexGallery = () => {
   const params = useSearchParams();
   const category = params.get("category");
   const search = params.get("search");
+  const upload = params.get("popup") ? true : false;
 
   const images = data.filter(
     (item) =>
@@ -15,7 +17,8 @@ const IndexGallery = () => {
         : item) && (category ? item.category === category : item)
   );
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 justify-items-center w-full h-fit shadow-md shadow-white bg-white py-4 px-6 rounded-md ">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 justify-items-center w-full h-fit shadow-md shadow-white bg-white py-4 px-6 rounded-md">
+      {upload ? <UploadPopup /> : null}
       {images.length > 0 ? (
         images.map((item) => <ImageCard key={item.id} {...item} />)
       ) : (

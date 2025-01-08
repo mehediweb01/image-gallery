@@ -10,6 +10,15 @@ const Header = () => {
     e.preventDefault();
     route.push(Search ? `/?search=${Search}` : "/");
   };
+
+  const UploadImage = () => {
+    const body = document.querySelector("body");
+    route.push("/?popup=true");
+    if (body) {
+      body.className = "overflow-hidden";
+    }
+  };
+
   useEffect(() => {
     route.push(Search ? `/?search=${Search}` : "/");
   }, [Search, route]);
@@ -30,7 +39,10 @@ const Header = () => {
         </button>
       </div>
       <div>
-        <button className="uppercase text-base md:text-xl font-semibold bg-white rounded-md px-4 py-2 active:translate-y-0.5 active:transition-all active:duration-100 text-center hover:bg-blue-300 transition-colors duration-300">
+        <button
+          onClick={UploadImage}
+          className="uppercase text-base md:text-xl font-semibold bg-white rounded-md px-4 py-2 active:translate-y-0.5 active:transition-all active:duration-100 text-center hover:bg-blue-300 transition-colors duration-300"
+        >
           upload
         </button>
       </div>
