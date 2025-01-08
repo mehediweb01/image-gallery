@@ -1,6 +1,7 @@
 import React from "react";
 import Index from "./components/nav";
 import Header from "./components/header";
+import IndexGallery from "./components/gallery";
 
 const HomePage = () => {
   return (
@@ -8,6 +9,7 @@ const HomePage = () => {
       <div className="font-serif bg-black shadow-md shadow-green-400 px-4 py-6 rounded-lg sm:w-3/4 w-full mx-2">
         <Index />
         <Header />
+        <IndexGallery />
       </div>
     </div>
   );
