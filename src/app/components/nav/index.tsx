@@ -26,7 +26,7 @@ const Index = () => {
         </Link>
       </div>
       {/* nav item */}
-      <div className="flex space-x-3 text-white font-semibold text-xl">
+      <div className="flex space-x-3 text-white font-bold text-xl">
         {navItem.map((item, i) => (
           <Item key={i} {...item} />
         ))}
