@@ -1,7 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import Image from "next/image";
 
-const ImagePopup = ({ url, updatePopup }) => {
+const ImagePopup: FC<{ url: string; updatePopup: () => void }> = ({
+  url,
+  updatePopup,
+}) => {
   return (
     <div className="w-full min-h-screen absolute top-0 left-0 bg-transparent z-50">
       <div className="w-full min-h-screen flex justify-center items-center absolute top-0 left-0 bg-slate-950/50 z-50">
