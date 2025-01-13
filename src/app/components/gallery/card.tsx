@@ -4,19 +4,28 @@ import React, { FC, useState } from "react";
 import { IImage } from "@/types";
 import saveIcon from "@/app/img/save.svg";
 import saveDone from "@/app/img/save-done.svg";
+import ImagePopup from "./ImagePopup";
+
 const ImageCard: FC<IImage> = ({ likes, name, shares, url }) => {
   const [save, setSave] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const [totalLike, setTotalLike] = useState(likes);
+
   const updateLike = (isSave: boolean) => {
-      setSave(isSave)
-      setTotalLike((prev)=> isSave ? prev + 1 : prev - 1)
-  }
+    setSave(isSave);
+    setTotalLike((prev) => (isSave ? prev + 1 : prev - 1));
+  };
+  const imagePopUp = () => {
+    setToggle(!toggle);
+  };
   return (
     <div>
+      {toggle && <ImagePopup updatePopup={imagePopUp} url={url} />}
       <figure className="relative group overflow-hidden rounded-md">
         <Image
           src={url}
           alt={name}
+          onClick={imagePopUp}
           width={500}
           height={500}
           className="w-full object-cover h-[250px] group-hover:scale-105 transition-all duration-200 group-hover:cursor-pointer"

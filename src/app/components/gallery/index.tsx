@@ -6,6 +6,7 @@ import { data } from "@/lib/db";
 import { useRouter, useSearchParams } from "next/navigation";
 import UploadPopup from "./uploadPopup";
 import { IImage, TCategory } from "@/types";
+
 const IndexGallery = () => {
   const [images, setImages] = useState<IImage[]>([]);
   const params = useSearchParams();
@@ -52,7 +53,11 @@ const IndexGallery = () => {
     <div className="grid grid-cols-2 md:grid-cols-3 gap-3 justify-items-center w-full h-fit shadow-md shadow-white bg-white py-4 px-6 rounded-md">
       {upload && <UploadPopup submit={addNewItem} close={close} />}
       {images.length > 0 ? (
-        images.map((item) => <ImageCard key={item.id} {...item} />)
+        images.map((item) => (
+          <div key={item.id}>
+            <ImageCard key={item.id} {...item} />
+          </div>
+        ))
       ) : (
         <h2 className="text-slate-600 text-center font-bold text-4xl col-span-4">
           Data Not Found!
