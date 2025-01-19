@@ -55,4 +55,12 @@ export const data: IImage[] = [
     likes: 1982,
     shares: 153,
   },
+  {
+    id: "6",
+    name: "Minimalist Shapes",
+    url: image1,
+    category: "photo",
+    likes: 698,
+    shares: 4,
+  },
 ];
